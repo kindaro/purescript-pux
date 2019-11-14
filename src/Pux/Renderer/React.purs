@@ -115,7 +115,7 @@ renderItem input (Element _ n c a e r) =
 renderItem input (Content t r) =
   state \s -> Tuple r $ snoc s $ reactText t
 renderItem input (Empty r) = pure r
-renderItem input (Doctype t r) = state \s -> Tuple r $ snoc s $ reactText ""
+renderItem _     (Doctype _ r) = state \s -> Tuple r (snoc s (reactText ""))
 
 renderNodes :: ∀ e. (e -> ReactAttribute) -> Markup e -> Array ReactElement
 renderNodes input markup = execState (foldFree (renderItem input) markup) []
