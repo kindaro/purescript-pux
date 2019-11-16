@@ -7,3 +7,4 @@
 .pulp-cache
 .psc*
 examples/*/*.js
+.spago/
