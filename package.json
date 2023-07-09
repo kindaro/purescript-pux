@@ -1,9 +1,9 @@
 {
   "name": "purescript-pux",
   "description": "Build type-safe web applications with PureScript.",
-  "version": "13.0.0",
+  "version": "14.0.0",
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "spago build",
     "build:clean": "rm -rf dist output",
     "docs": "rm -rf docs/API && pulp docs && mkdir -p docs/API && mv generated-docs/Pux docs/API/Pux && mv generated-docs/Pux.md docs/API/Pux.md && rm -r generated-docs",
     "publish:website": "npm run docs && cd website && npm run build && cd dist/www && git init && git commit --allow-empty -m 'Update website.' && git checkout -b gh-pages && touch .nojekyll && echo purescript-pux.org > CNAME && git add . && git commit -am 'Update website.' && git push git@github.com:alexmingoia/purescript-pux gh-pages --force",
@@ -17,14 +17,13 @@
     "build:example:react-interop": "pulp build --main ReactInteropExample --to output/bundle.js -I examples/react-interop",
     "build:examples": "npm run build:example:counter && npm run build:example:nested-foldp && npm run build:example:ajax && npm run build:example:routing && npm run build:example:form",
     "test": "npm -s run test:react && npm -s run test:preact",
-    "test:react": "pulp test",
-    "test:preact": "pulp test --runtime babel-node"
+    "test:react": "spago test",
+    "test:preact": "spago test --runtime babel-node"
   },
   "dependencies": {
-    "bower": "^1.8.2",
-    "create-react-class": "^15.6.2",
-    "pulp": "^12.3.0",
-    "purescript": "^0.12.0"
+    "spago": "^0.17.0",
+    "purescript": "^0.14.0",
+    "create-react-class": "^15.6.2"
   },
   "directories": {
     "doc": "docs",
@@ -52,9 +51,9 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-module-resolver": "^2.7.1",
-    "react": "^16.0.0",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
+    "react": "^16.0.0",
     "react-dom": "^16.0.0"
   }
 }

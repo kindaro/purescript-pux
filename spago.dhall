@@ -12,7 +12,7 @@ You can edit this file as you like.
     , "effect"
     , "foreign-object"
     , "functions"
-    , "globals"
+    , "numbers"
     , "lists"
     , "ordered-collections"
     , "profunctor"

@@ -119,10 +119,29 @@ let additions =
 
 
 let upstream =
-      https://github.com/purescript/package-sets/releases/download/psc-0.13.4-20191110/packages.dhall sha256:563a7f694e18e6399f7f6d01f5b7e3c3345781655d99945768f48e458feb93a4
+      https://github.com/purescript/package-sets/releases/download/psc-0.14.7-20220418/packages.dhall sha256:2523a5659d0f3b198ffa2f800da147e0120578842e492a7148e4b44f357848b3
 
 let overrides = {=}
 
-let additions = {=}
+let additions =
+  { smolder =
+    { dependencies = 
+      [ "bifunctors"
+      , "catenable-lists"
+      , "console"
+      , "effect"
+      , "free"
+      , "ordered-collections"
+      , "prelude"
+      , "psci-support"
+      , "strings"
+      , "test-unit"
+      , "transformers"
+      , "tuples"
+      ]
+    , repo = "https://github.com/uffizio/purescript-smolder.git"
+    , version = "5bd90e4474308fa2ba7563bf2c619e389b41f8a4"
+    }
+  }
 
 in  upstream // overrides // additions

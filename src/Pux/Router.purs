@@ -35,7 +35,7 @@ import Data.Profunctor (lcmap)
 import Data.String as S
 import Data.Tuple (Tuple(Tuple), fst, snd)
 import Data.Unit (Unit, unit)
-import Global (readFloat, isNaN)
+import Data.Number (fromString) as Number
 
 data RoutePart = Path String | Query (M.Map String String)
 type Route = List RoutePart
@@ -63,13 +63,7 @@ parseSegment parser = Match $ \r ->
     _ -> Nothing
 
 num :: Match Number
-num = parseSegment parse
-  where
-    parse p = let res = readFloat p in
-      if isNaN res then
-        Nothing
-      else
-        Just res
+num = parseSegment Number.fromString
 
 int :: Match Int
 int = parseSegment fromString
